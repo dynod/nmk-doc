@@ -1,0 +1,30 @@
+refs:
+    # All base plugins (+current one)
+    - pip://nmk-github!plugin.yml
+    - pip://nmk-python!plugin.yml
+    - pip://nmk-vscode!plugin.yml
+    - pip://nmk-badges!plugin.yml
+    - src/nmk_doc/plugin.yml
+    - <workspace>/shared.yml
+    - workspace:
+        local: ../../../../shared
+        remote: github://dynod/workspace/main/shared
+
+config:
+    # Python package
+    pythonPackage: nmk-doc
+    
+    # Nmk dependencies
+    pythonPackageRequirements:
+        - nmk-base
+
+    # Extra setup data
+    pythonSetupItems:
+        metadata:
+            description: Documentation handling plugin for nmk build system
+        options.package_data:
+                nmk_doc: "*.yml"
+
+    # Github issues logged in nmk project
+    githubIssuesRepo: nmk
+    githubIssuesLabel: "plugin:doc"
