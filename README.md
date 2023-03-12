@@ -10,7 +10,7 @@ Documentation handling plugin for nmk build system
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Flake8 analysis result](https://img.shields.io/badge/flake8-0-green)](https://flake8.pycqa.org/)
 [![Code coverage](https://img.shields.io/codecov/c/github/dynod/nmk-doc)](https://app.codecov.io/gh/dynod/nmk-doc)
-[![Documentation Status](https://readthedocs.org/projects/nmk-doc/badge/?version=latest)](https://nmk-doc.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/nmk-doc/badge/?version=stable)](https://nmk-doc.readthedocs.io/en/stable/?badge=stable)
 <!-- NMK-BADGES-END -->
 
 This plugin provide tasks to build documentation using the [Sphinx tool](https://www.sphinx-doc.org/).
@@ -25,7 +25,7 @@ refs:
 
 ## Documentation
 
-This plugin documentation is available [here](https://github.com/dynod/nmk/wiki/nmk-doc-plugin)
+This plugin documentation is available [here](https://nmk-doc.readthedocs.io/en/stable)
 
 ## Issues
 
