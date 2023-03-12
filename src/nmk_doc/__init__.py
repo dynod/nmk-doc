@@ -1,3 +1,7 @@
+"""
+Python module for **nmk-doc** plugin code.
+"""
+
 from configparser import ConfigParser
 from pathlib import Path
 
@@ -5,8 +9,15 @@ from nmk_base.version import VersionResolver
 from pkg_resources import DistributionNotFound, get_distribution
 
 __title__ = "nmk-doc"
+"""
+Module name
+"""
+
 try:
     __version__ = get_distribution(__title__).version
+    """
+    Module version, dynamically resolved from installed package
+    """
 except DistributionNotFound:  # pragma: no cover
     # For debug
     try:
@@ -19,5 +30,16 @@ except DistributionNotFound:  # pragma: no cover
 
 
 class NmkDocVersionResolver(VersionResolver):
+    """
+    Version resolver for **${nmkDocPluginVersion}**
+    """
+
     def get_version(self) -> str:
+        """
+        Module version accessor
+
+        :return: current module version
+        :rtype: str
+        """
+
         return __version__
