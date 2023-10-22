@@ -39,7 +39,6 @@ class NmkDocVersionResolver(VersionResolver):
         Module version accessor
 
         :return: current module version
-        :rtype: str
         """
 
         return __version__

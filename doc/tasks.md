@@ -17,6 +17,17 @@ This tasks generates the [sphinx](https://www.sphinx-doc.org/) configuration fil
 | output   | {ref}`${docConfig}<docconfig>` file
 | if       | enabled only if {ref}`${docInputs}<docinputs>` config item is not empty
 
+### **`doc.rtd`** -- Read The Docs build configuration file generation
+
+This tasks generates the [Read The Docs](https://readthedocs.org/) automated build configuration file.
+
+| Property | Value/description |
+|-         |-
+| builder  | {py:class}`nmk_doc.builders.NmkDocConfigBuilder`
+| input    | {ref}`${docConfig}<docconfig>` doc config file
+| output   | {ref}`${docRTDConfig}<docRTDConfig>` file
+| if       | enabled only if {ref}`${docInputs}<docinputs>` config item is not empty
+
 ## Build tasks
 
 All tasks in this chapter are dependencies of the main **`build`** task.

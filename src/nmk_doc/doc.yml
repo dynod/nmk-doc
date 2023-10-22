@@ -48,6 +48,12 @@ config:
     # Doc output folder
     docOutput: ${outputDir}/doc
 
+    # Config file for ReadTheDocs automated build
+    docRTDConfig: ${PROJECTDIR}/.readthedocs.yaml
+
+    # Template file for ReadTheDocs automated build config
+    docRTDConfigTemplate: ${BASEDIR}/templates/readthedocs.yaml.jinja
+
     # Additional venv dependencies (sphinx itself + plugins)
     venvPkgDeps:
         - sphinx
@@ -65,11 +71,30 @@ tasks:
         appendToDeps:
             - setup
         if: ${docInputs}
-        input: ${gitVersionStamp}
+        input:
+            - ${gitVersionStamp}
+            - ${docConfigTemplate}
         output: ${docConfig}
         builder: nmk_doc.builders.NmkDocConfigBuilder
         params:
             template: ${docConfigTemplate}
+
+    # Generate "Read The Docs" configuration file
+    doc.rtd:
+        description: Generate ReadTheDocs config file
+        emoji: ":open_book:.:pencil:"
+        deps:
+            - doc.config
+        appendToDeps:
+            - setup
+        if: ${docInputs}
+        input:
+            - ${docConfig}
+            - ${docRTDConfigTemplate}
+        output: ${docRTDConfig}
+        builder: nmk_doc.builders.NmkDocConfigBuilder
+        params:
+            template: ${docRTDConfigTemplate}
 
     # Build documentation
     doc.build:

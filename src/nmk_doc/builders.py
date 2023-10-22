@@ -11,15 +11,14 @@ from nmk_base.common import TemplateBuilder
 
 class NmkDocConfigBuilder(TemplateBuilder):
     """
-    Builder used to generate the **sphinx** config file
+    Builder used to generate doc config files
     """
 
     def build(self, template: str):
         """
-        Called by the **doc.config** task, to generate the **sphinx** config file
+        Called by the **doc.config** and **doc.rtd** tasks, to generate the **sphinx** + **Read The Docs** config files
 
-        :param template: Path to the Jinja template for **sphinx** config file -- see **${docConfigTemplate}**
-        :type template: str
+        :param template: Path to the Jinja template to use for generation**
         """
 
         # Just build from template
@@ -36,9 +35,7 @@ class NmkDocSphinxBuilder(NmkTaskBuilder):
         Called by the **doc.build** task, to build the **sphinx** documentation
 
         :param source_folder: doc source folder
-        :type source_folder: str
         :param output_folder: doc output folder
-        :type output_folder: str
         """
 
         # Invoke sphinx
