@@ -14,3 +14,8 @@ build:
 # Build documentation directory with Sphinx
 sphinx:
   configuration: doc/conf.py
+
+# Declare the Python requirements required to build your documentation
+python:
+    install:
+    - requirements: requirements.txt
