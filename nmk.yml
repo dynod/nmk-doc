@@ -28,4 +28,4 @@ config:
     githubIssuesLabel: "plugin:doc"
 
     # Minor increment
-    docVersionIncrement: "0.0.1"
+    docVersionIncrement: "0.1.0"

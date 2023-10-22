@@ -40,9 +40,7 @@ class NmkDocVersionResolver(NmkStrConfigResolver):
           * otherwise deduce last tag and increment it with increment configured in **${docVersionIncrement}** config item
 
         :param name: config item name to be resolved
-        :type name: str
         :return: resolved version
-        :rtype: str
         """
 
         # Get git version
@@ -97,9 +95,7 @@ class NmkDocYearResolver(NmkIntConfigResolver):
         Get today's year.
 
         :param name: config item name to be resolved
-        :type name: str
         :return: current year
-        :rtype: str
         """
 
         # Today's year

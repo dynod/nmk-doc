@@ -9,7 +9,7 @@
 project = "nmk-doc"
 copyright = "2023, The dynod project"
 author = "The dynod project"
-release = "0.1.1"
+release = "0.2.0"
 
 # Extensions configuration
 extensions = ["autoapi.extension", "myst_parser", "sphinx_rtd_theme"]
@@ -21,3 +21,4 @@ html_theme = "sphinx_rtd_theme"
 
 autoapi_dirs = ['../src']
 autoapi_ignore = ['*tests*', '*templates*']
+autoapi_options = ['members', 'undoc-members', 'show-inheritance', 'show-module-summary']
