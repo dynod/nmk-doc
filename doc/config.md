@@ -74,6 +74,14 @@ This is the list of the [sphinx](https://www.sphinx-doc.org/) extensions to be e
 * [myst_parser](https://myst-parser.readthedocs.io/en/stable/index.html): used to support markdown (*.md) files in documentation input
 * [sphinx_rtd_theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/index.html): used to enable the [ReadTheDocs](https://readthedocs.org/) HTML theme for generated documentation
 
+### **`docExtensionsVenvDeps`** -- Venv dependencies for sphinx extensions
+
+| Type       | Default value |
+|-           |-
+| list[str] | []
+
+List of extra python venv dependencies required to enable declared sphinx extensions
+
 ### **`docHtmlTheme`** -- HTML theme
 
 | Type | Default value |
