@@ -19,6 +19,9 @@ config:
         - myst_parser
         - sphinx_rtd_theme
 
+    # Extendable list for venv deps for projects which may need for other sphinx extensions
+    docExtensionsVenvDeps: []
+
     # Project name (default: shared name config)
     docName: ${projectName}
 
@@ -54,11 +57,12 @@ config:
     # Template file for ReadTheDocs automated build config
     docRTDConfigTemplate: ${BASEDIR}/templates/readthedocs.yaml.jinja
 
-    # Additional venv dependencies (sphinx itself + plugins)
+    # Additional venv dependencies (sphinx itself + plugins + external contributions)
     venvPkgDeps:
         - sphinx
         - sphinx_rtd_theme
         - myst-parser
+        - ${docExtensionsVenvDeps}
 
 tasks:
 

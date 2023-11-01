@@ -9,7 +9,7 @@
 project = "nmk-doc"
 copyright = "2023, The dynod project"
 author = "The dynod project"
-release = "0.2.0"
+release = "0.3.0"
 
 # Extensions configuration
 extensions = ["autoapi.extension", "myst_parser", "sphinx_rtd_theme"]
