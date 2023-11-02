@@ -6,8 +6,9 @@ This plugin handles documentation build and generation for **`nmk`** projects, u
 :caption: 'Contents'
 :maxdepth: 2
 usage
-config
 tasks
+extend
+config
 contribs
 ```
 

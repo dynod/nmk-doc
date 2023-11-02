@@ -17,7 +17,7 @@ config:
 
     # Plugin help links dict
     nmkPluginsDocs:
-        nmk-doc: https://nmk-doc.readthedocs.io/en/stable
+        nmk-doc: https://nmk-doc.readthedocs.io/
 
     # Extra VSCode words for CSpell extension
     vscodeSettingsItems:
