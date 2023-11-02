@@ -4,7 +4,7 @@ The **`nmk-doc`** plugin defines the tasks described below.
 
 ## Setup tasks
 
-All tasks in this chapter are dependencies of the main **`setup`** task.
+All tasks in this chapter are dependencies of the base [**`setup`**](https://nmk-base.readthedocs.io/en/stable/tasks.html#setup-task) task.
 
 ### **`doc.config`** -- doc configuration file generation
 
@@ -13,7 +13,7 @@ This tasks generates the [sphinx](https://www.sphinx-doc.org/) configuration fil
 | Property | Value/description |
 |-         |-
 | builder  | {py:class}`nmk_doc.builders.NmkDocConfigBuilder`
-| input    | **${gitVersion}** value (current git version)
+| input    | **[${gitVersion}](https://nmk-base.readthedocs.io/en/stable/config.html#gitversion-git-version)** value (current git version)
 | output   | {ref}`${docConfig}<docconfig>` file
 | if       | enabled only if {ref}`${docInputs}<docinputs>` config item is not empty
 
@@ -30,7 +30,7 @@ This tasks generates the [Read The Docs](https://readthedocs.org/) automated bui
 
 ## Build tasks
 
-All tasks in this chapter are dependencies of the main **`build`** task.
+All tasks in this chapter are dependencies of the base [**`build`**](https://nmk-base.readthedocs.io/en/stable/tasks.html#build-task) task.
 
 ### **`doc.build`** -- documentation build
 

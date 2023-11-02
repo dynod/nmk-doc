@@ -1,8 +1,8 @@
-# Configuration
+# Configuration Reference
 
 The **`nmk-doc`** plugin handles the configuration items listed in this page.
 
-All of them are initiliazed with convenient default values, so that you don't need to setup them for a default working behavior. You can anyway override them in your project if you need to fine tune the plugin behavior.
+All of them are initiliazed with convenient default values, so that you don't need to setup them for a default working behavior. You can anyway override them in your project if you need to fine tune the plugin behavior. [Some items](extend.md) are specifically designed to be extended by **`nmk`** projects and plugins.
 
 ## Paths and files
 
@@ -58,12 +58,13 @@ This item is welcomed to be extended by other plugins, typically to include sour
 
 | Type | Default value |
 |-     |-
-| str  | ${outputDir}/doc
+| str  | **[${outputDir}](https://nmk-base.readthedocs.io/en/stable/config.html#outputdir-output-base-directory)**/doc
 
 This is the path where [sphinx](https://www.sphinx-doc.org/) will generate the documentation.
 
 ## Sphinx configuration
 
+(docExtensions)=
 ### **`docExtensions`** -- Enabled sphinx extensions
 
 | Type       | Default value |
@@ -74,6 +75,7 @@ This is the list of the [sphinx](https://www.sphinx-doc.org/) extensions to be e
 * [myst_parser](https://myst-parser.readthedocs.io/en/stable/index.html): used to support markdown (*.md) files in documentation input
 * [sphinx_rtd_theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/index.html): used to enable the [ReadTheDocs](https://readthedocs.org/) HTML theme for generated documentation
 
+(docExtensionsVenvDeps)=
 ### **`docExtensionsVenvDeps`** -- Venv dependencies for sphinx extensions
 
 | Type       | Default value |
@@ -94,7 +96,7 @@ This item configures the enabled HTML theme for generated documentation.
 
 | Type | Default value |
 |-     |-
-| str  | ${projectName}
+| str  | **[${projectName}](https://nmk-base.readthedocs.io/en/stable/config.html#projectname-project-name)**
 
 This item is used to configure the main document name. Default value is the project name.
 
@@ -102,7 +104,7 @@ This item is used to configure the main document name. Default value is the proj
 
 | Type | Default value |
 |-     |-
-| str  | ${projectAuthor}
+| str  | **[${projectAuthor}](https://nmk-base.readthedocs.io/en/stable/config.html#projectauthor-project-author)**
 
 This item is used to configure the document author. Default value is the project author.
 
@@ -142,6 +144,7 @@ Examples
 
 This item configures the document generation year. Default is the current one.
 
+(docExtraConfig)=
 ### **`docExtraConfig`** -- Extra configuration items
 
 | Type | Default value |
