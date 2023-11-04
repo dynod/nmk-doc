@@ -12,8 +12,8 @@ This tasks generates the [sphinx](https://www.sphinx-doc.org/) configuration fil
 
 | Property | Value/description |
 |-         |-
-| builder  | {py:class}`nmk_doc.builders.NmkDocConfigBuilder`
-| input    | **[${gitVersion}](https://nmk-base.readthedocs.io/en/stable/config.html#gitversion-git-version)** value (current git version)
+| builder  | [**`nmk_base.common.TemplateBuilder`**](https://nmk-base.readthedocs.io/en/stable/autoapi/nmk_base/common/index.html#nmk_base.common.TemplateBuilder)
+| input    | {ref}`${docConfigTemplate}<docConfigTemplate>` template file
 | output   | {ref}`${docConfig}<docconfig>` file
 | if       | enabled only if {ref}`${docInputs}<docinputs>` config item is not empty
 
@@ -23,8 +23,8 @@ This tasks generates the [Read The Docs](https://readthedocs.org/) automated bui
 
 | Property | Value/description |
 |-         |-
-| builder  | {py:class}`nmk_doc.builders.NmkDocConfigBuilder`
-| input    | {ref}`${docConfig}<docconfig>` doc config file
+| builder  | [**`nmk_base.common.TemplateBuilder`**](https://nmk-base.readthedocs.io/en/stable/autoapi/nmk_base/common/index.html#nmk_base.common.TemplateBuilder)
+| inputs    | {ref}`${docConfig}<docconfig>` doc config file<br>{ref}`${docRTDConfigTemplate}<docRTDConfigTemplate>` template file
 | output   | {ref}`${docRTDConfig}<docRTDConfig>` file
 | if       | enabled only if {ref}`${docInputs}<docinputs>` config item is not empty
 
