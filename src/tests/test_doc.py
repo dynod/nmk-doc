@@ -55,19 +55,3 @@ class TestDocPlugin(NmkBaseTester):
         # Check rebuild
         self.nmk(prj, extra_args=["doc.build"])
         self.check_logs("[doc.build]] DEBUG 🐛 - Task skipped, nothing to do")
-
-    def test_check_version_tag(self):
-        # Check doc version with tagged version
-        index_template = self.template("index.md")
-        shutil.copyfile(index_template, self.doc_folder / index_template.name)
-        prj = self.prepare_doc_project()
-        self.nmk(prj, extra_args=["--config", "gitVersion=1.2.3", "--print", "docVersion"])
-        self.check_logs('Config dump: { "docVersion": "1.2.3" }')
-
-    def test_check_version_increment(self):
-        # Check doc version with increment version
-        index_template = self.template("index.md")
-        shutil.copyfile(index_template, self.doc_folder / index_template.name)
-        prj = self.prepare_doc_project()
-        self.nmk(prj, extra_args=["--config", "gitVersion=1.2.3-3-g1234567", "--config", "gitVersionIncrement=0.1.0", "--print", "docVersion"])
-        self.check_logs('Config dump: { "docVersion": "1.3.0" }')

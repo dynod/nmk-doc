@@ -28,13 +28,6 @@ config:
     # Project author (default: shared author config)
     docAuthor: ${projectAuthor}
 
-    # Project version (default: use resolver to deduce from git version)
-    docVersion:
-        __resolver__: nmk_doc.resolvers.NmkDocVersionResolver
-
-    # Project version increment (used to predict next version, from next git tag)
-    docVersionIncrement: "0.1.0"
-
     # Project year
     docYear:
         __resolver__: nmk_doc.resolvers.NmkDocYearResolver
@@ -76,10 +69,9 @@ tasks:
             - setup
         if: ${docInputs}
         input:
-            - ${gitVersionStamp}
             - ${docConfigTemplate}
         output: ${docConfig}
-        builder: nmk_doc.builders.NmkDocConfigBuilder
+        builder: nmk_base.common.TemplateBuilder
         params:
             template: ${docConfigTemplate}
 
@@ -96,7 +88,7 @@ tasks:
             - ${docConfig}
             - ${docRTDConfigTemplate}
         output: ${docRTDConfig}
-        builder: nmk_doc.builders.NmkDocConfigBuilder
+        builder: nmk_base.common.TemplateBuilder
         params:
             template: ${docRTDConfigTemplate}
 

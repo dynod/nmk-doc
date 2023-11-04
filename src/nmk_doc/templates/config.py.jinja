@@ -9,7 +9,6 @@
 project = "{{ docName }}"
 copyright = "{{ docYear }}, {{ docAuthor }}"
 author = "{{ docAuthor }}"
-release = "{{ docVersion }}"
 
 # Extensions configuration
 extensions = [{% for extension in docExtensions %}{% if loop.index > 1 %}, {% endif %}"{{ extension }}"{% endfor %}]
