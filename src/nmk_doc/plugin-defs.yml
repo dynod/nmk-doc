@@ -22,3 +22,7 @@ config:
     # Extra VSCode words for CSpell extension
     vscodeSettingsItems:
         cSpell.words: [rtype]
+
+    # Contribution to VSCode extensions
+    vscodeExtensionsNames:
+        - ms-vscode.live-server # Used for live preview of generated documentation
