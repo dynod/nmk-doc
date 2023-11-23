@@ -50,6 +50,9 @@ config:
     # Template file for ReadTheDocs automated build config
     docRTDConfigTemplate: ${BASEDIR}/templates/readthedocs.yaml.jinja
 
+    # Flag to disable ReadTheDocs file generation
+    docRTDDisabled: false
+
     # Additional venv dependencies (sphinx itself + plugins + external contributions)
     venvPkgDeps:
         - sphinx
@@ -84,6 +87,7 @@ tasks:
         appendToDeps:
             - setup
         if: ${docInputs}
+        unless: ${docRTDDisabled}
         input:
             - ${docConfig}
             - ${docRTDConfigTemplate}

@@ -55,3 +55,28 @@ class TestDocPlugin(NmkBaseTester):
         # Check rebuild
         self.nmk(prj, extra_args=["doc.build"])
         self.check_logs("[doc.build]] DEBUG 🐛 - Task skipped, nothing to do")
+
+    def test_build_rtd(self):
+        # Prepare doc project
+        index_template = self.template("index.md")
+        shutil.copyfile(index_template, self.doc_folder / index_template.name)
+        prj = self.prepare_doc_project()
+        self.nmk(prj, extra_args=["doc.rtd", "--config", '{"pythonSupportedVersions":["3.8"]}'])
+
+        # Check generated ReadTheDocs file
+        assert (self.test_folder / ".readthedocs.yaml").is_file()
+
+        # Check rebuild
+        self.nmk(prj, extra_args=["doc.rtd"])
+        self.check_logs("[doc.rtd]] DEBUG 🐛 - Task skipped, nothing to do")
+
+    def test_build_rtd_disabled(self):
+        # Prepare doc project
+        index_template = self.template("index.md")
+        shutil.copyfile(index_template, self.doc_folder / index_template.name)
+        prj = self.prepare_doc_project()
+        self.nmk(prj, extra_args=["doc.rtd", "--config", '{"docRTDDisabled":true}'])
+
+        # Check ReadTheDocs file is not generated
+        assert not (self.test_folder / ".readthedocs.yaml").is_file()
+        self.check_logs("[doc.rtd]] DEBUG 🐛 - Task skipped, nothing to do")
