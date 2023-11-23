@@ -5,3 +5,4 @@ config:
         img: https://readthedocs.org/projects/${projectName}/badge/?version=stable
         url: https://${projectName}.readthedocs.io/
         if: ${docInputs}
+        unless: ${docRTDDisabled}

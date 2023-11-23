@@ -149,3 +149,12 @@ See [Config file documentation](https://docs.readthedocs.io/en/stable/config-fil
 | str  | ${BASEDIR}/templates/readthedocs.yaml.jinja
 
 This is the template path to generate {ref}`${docRTDConfig}<docRTDConfig>` file.
+
+(docRTDDisabled)=
+### **`docRTDDisabled`** -- Read The Docs build enablement
+
+| Type | Default value |
+|-     |-
+| bool | False
+
+This boolean flag allows to disable config file and badge generation for [Read The Docs](https://readthedocs.org/), if the project is just intended to be a local one, without publishing any external documentation.
