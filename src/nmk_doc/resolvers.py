@@ -1,6 +1,7 @@
 """
 Module containing all config item resolvers for **nmk-doc** plugin.
 """
+
 from datetime import date
 
 from nmk.model.resolver import NmkIntConfigResolver
