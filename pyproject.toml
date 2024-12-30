@@ -9,7 +9,7 @@ name = "nmk-doc"
 dynamic = ["version"]
 requires-python = ">=3.9"
 classifiers = ["Programming Language :: Python :: 3.9", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12", "Programming Language :: Python :: 3.13"]
-dependencies = ["sphinx", "sphinx_rtd_theme", "myst-parser", "nmk-base"]
+dependencies = ["nmk-base", "sphinx", "sphinx_rtd_theme", "myst-parser"]
 description = "Documentation handling plugin for nmk build system"
 
 [[project.authors]]

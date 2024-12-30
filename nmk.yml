@@ -15,9 +15,12 @@ path:
     - src
 
 config:
-    # Nmk dependencies
+    # Plugin dependencies
     pythonPackageRequirements:
         - nmk-base
+        - sphinx
+        - sphinx_rtd_theme
+        - myst-parser
 
     # Extra project data
     pythonProjectFileItems:
