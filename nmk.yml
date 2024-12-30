@@ -19,13 +19,10 @@ config:
     pythonPackageRequirements:
         - nmk-base
 
-    # Extra setup data
-    pythonSetupItems:
-        metadata:
+    # Extra project data
+    pythonProjectFileItems:
+        project:
             description: Documentation handling plugin for nmk build system
-        options.package_data:
-            nmk_doc: "*.yml"
-            nmk_doc.templates: "*.jinja"
 
     # Github issues logged in nmk project
     githubIssuesRepo: nmk

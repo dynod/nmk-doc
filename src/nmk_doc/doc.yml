@@ -19,7 +19,7 @@ config:
         - myst_parser
         - sphinx_rtd_theme
 
-    # Extendable list for venv deps for projects which may need for other sphinx extensions
+    # Extendable list for venv deps for projects which may need other sphinx extensions
     docExtensionsVenvDeps: []
 
     # Project name (default: shared name config)
@@ -53,11 +53,14 @@ config:
     # Flag to disable ReadTheDocs file generation
     docRTDDisabled: false
 
-    # Additional venv dependencies (sphinx itself + plugins + external contributions)
-    venvPkgDeps:
+    # Tools requirements (sphinx itself + plugins)
+    pythonPackageRequirements:
         - sphinx
         - sphinx_rtd_theme
         - myst-parser
+
+    # Additional venv dependencies (other sphinx extensions)
+    venvPkgDeps:
         - ${docExtensionsVenvDeps}
 
 tasks:
