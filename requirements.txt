@@ -9,6 +9,7 @@
 build
 myst-parser
 nmk-base
+nmk-doc
 nmk-vscode
 pytest-cov
 pytest-multilog

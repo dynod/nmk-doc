@@ -53,9 +53,9 @@ config:
     # Flag to disable ReadTheDocs file generation
     docRTDDisabled: false
 
-    # Additional venv dependencies (other sphinx extensions)
     venvPkgDeps:
-        - ${docExtensionsVenvDeps}
+        - nmk-doc                   # Self reference (to be removed once https://github.com/dynod/nmk/issues/256 is resolved)
+        - ${docExtensionsVenvDeps}  # Additional venv dependencies (other sphinx extensions)
 
 tasks:
 
