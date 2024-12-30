@@ -53,12 +53,6 @@ config:
     # Flag to disable ReadTheDocs file generation
     docRTDDisabled: false
 
-    # Tools requirements (sphinx itself + plugins)
-    pythonPackageRequirements:
-        - sphinx
-        - sphinx_rtd_theme
-        - myst-parser
-
     # Additional venv dependencies (other sphinx extensions)
     venvPkgDeps:
         - ${docExtensionsVenvDeps}
