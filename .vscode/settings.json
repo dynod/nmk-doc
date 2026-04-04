@@ -21,20 +21,21 @@
         "sdist",
         "venv",
         "pyproject",
+        "pyright",
         "rtype",
         "dynod",
         "nmk",
         "pypi",
         "buildenv"
     ],
-    "python.analysis.extraPaths": [
-        "src"
-    ],
     "python.testing.pytestEnabled": true,
     "files.watcherExclude": {
         "**/venv/**": true
     },
     "editor.formatOnSave": true,
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "task.allowAutomaticTasks": "on",
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "terminal.integrated.profiles.linux": {
@@ -59,6 +60,7 @@
             ]
         }
     },
+    "python.terminal.activateEnvironment": false,
     "cSpell.allowCompoundWords": true,
     "cSpell.enableFiletypes": [
         "yaml",

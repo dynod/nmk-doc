@@ -7,8 +7,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "nmk-doc"
 dynamic = ["version"]
-requires-python = ">=3.9"
-classifiers = ["Programming Language :: Python :: 3.9", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12", "Programming Language :: Python :: 3.13"]
+requires-python = ">=3.10"
+classifiers = ["Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12", "Programming Language :: Python :: 3.13", "Programming Language :: Python :: 3.14"]
 dependencies = ["nmk-base", "sphinx", "sphinx_rtd_theme", "myst-parser"]
 description = "Documentation handling plugin for nmk build system"
 
@@ -30,9 +30,12 @@ Homepage = "https://github.com/dynod/nmk-doc"
 Repository = "https://github.com/dynod/nmk-doc"
 Issues = "https://github.com/dynod/nmk/issues?q=is%3Aopen+is%3Aissue+label%3Aplugin%3Adoc"
 
+[dependency-groups]
+dev = ["nmk-badges", "nmk-github", "nmk-python", "nmk-vscode", "sphinx-autoapi"]
+
 [tool.setuptools.packages.find]
 where = ["src"]
-exclude = ["tests"]
+exclude = ["tests*"]
 namespaces = false
 
 [tool.setuptools.package-data]
@@ -43,6 +46,11 @@ file = "out/.pythonversion"
 
 [tool.distutils.bdist_wheel]
 plat-name = "any"
+
+[tool.pyright]
+include = ["src"]
+typeCheckingMode = "strict"
+reportMissingTypeStubs = false
 
 [tool.ruff]
 line-length = 160
