@@ -1,0 +1,8 @@
+@startuml my-sample-diagram
+
+[*] --> StateA
+StateA --> StateB
+StateB --> StateC
+StateC --> StateA
+
+@enduml

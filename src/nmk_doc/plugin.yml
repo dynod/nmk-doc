@@ -1,28 +1,29 @@
 # Doc plugin definition
 refs:
-    - pip://nmk-base!plugin.yml
-    - doc.yml   # Doc generation handling
-    - badges.yml  # Badges generation logic
+  - pip://nmk-base!plugin.yml
+  - doc.yml # Doc generation handling
+  - badges.yml # Badges generation logic
+  - plantuml.yml # PlantUML generation logic
 
 # Extra config
 config:
+  # Plugin version
+  nmkDocPluginVersion:
+    __resolver__: nmk_doc.NmkDocVersionResolver
 
-    # Plugin version
-    nmkDocPluginVersion:
-        __resolver__: nmk_doc.NmkDocVersionResolver
+  # Plugin versions dict
+  nmkPluginsVersions:
+    nmk-doc: ${nmkDocPluginVersion}
 
-    # Plugin versions dict
-    nmkPluginsVersions:
-        nmk-doc: ${nmkDocPluginVersion}
+  # Plugin help links dict
+  nmkPluginsDocs:
+    nmk-doc: https://nmk-doc.readthedocs.io/
 
-    # Plugin help links dict
-    nmkPluginsDocs:
-        nmk-doc: https://nmk-doc.readthedocs.io/
+  # Extra VSCode words for CSpell extension
+  vscodeSettingsItems:
+    cSpell.words: [rtype]
 
-    # Extra VSCode words for CSpell extension
-    vscodeSettingsItems:
-        cSpell.words: [rtype]
-
-    # Contribution to VSCode extensions
-    vscodeExtensionsNames:
-        - ms-vscode.live-server # Used for live preview of generated documentation
+  # Contribution to VSCode extensions
+  vscodeExtensionsNames:
+    - ms-vscode.live-server # Used for live preview of generated documentation
+    - jebbs.plantuml # Used for PlantUML diagram editing and preview
