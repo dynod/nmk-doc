@@ -87,14 +87,14 @@ This is the path where [sphinx](https://www.sphinx-doc.org/) will generate the d
 
 ### **`docExtensions`** -- Enabled sphinx extensions
 
-| Type      | Default value                       |
-| --------- | ----------------------------------- |
-| list[str] | ["myst_parser", "sphinx_rtd_theme"] |
+| Type      | Default value           |
+| --------- | ----------------------- |
+| list[str] | ["myst_parser", "furo"] |
 
 This is the list of the [sphinx](https://www.sphinx-doc.org/) extensions to be enabled in the config file. Default enabled ones are:
 
 - [myst_parser](https://myst-parser.readthedocs.io/en/stable/index.html): used to support markdown (\*.md) files in documentation input
-- [sphinx_rtd_theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/index.html): used to enable the [ReadTheDocs](https://readthedocs.org/) HTML theme for generated documentation
+- [furo](https://pradyunsg.me/furo/): used to enable the **Furo** HTML theme for generated documentation
 
 (docExtensionsVenvDeps)=
 
@@ -106,13 +106,17 @@ This is the list of the [sphinx](https://www.sphinx-doc.org/) extensions to be e
 
 List of extra python venv dependencies required to enable declared sphinx extensions
 
+(docHtmlTheme)=
+
 ### **`docHtmlTheme`** -- HTML theme
 
-| Type | Default value    |
-| ---- | ---------------- |
-| str  | sphinx_rtd_theme |
+| Type | Default value |
+| ---- | ------------- |
+| str  | furo          |
 
 This item configures the enabled HTML theme for generated documentation.
+
+_<span style="color:orange">Changed in version 1.1.0</span>_ -- Previous theme was **sphinx_rtd_theme**
 
 ### **`docName`** -- Document name
 

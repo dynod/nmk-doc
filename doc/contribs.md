@@ -6,13 +6,13 @@ The **`nmk-doc`** plugin contributes to **`nmk`** features as described below.
 
 As other plugins, **`nmk-doc`** registers its version and documentation link in [plugin information config items](https://nmk-base.readthedocs.io/en/stable/extend.html#plugin-information).
 
-
 ## Venv
 
 The **`nmk-doc`** plugin automatically requires the following python packages to be installed in the [project venv](https://nmk-base.readthedocs.io/en/stable/extend.html#python-modules-dependencies):
-* [sphinx](https://pypi.org/project/sphinx/)
-* [sphinx_rtd_theme](https://pypi.org/project/sphinx_rtd_theme/)
-* [myst-parser](https://pypi.org/project/myst-parser/)
+
+- [sphinx](https://pypi.org/project/sphinx/)
+- [furo](https://pypi.org/project/furo/)
+- [myst-parser](https://pypi.org/project/myst-parser/)
 
 ## Badges
 

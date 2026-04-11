@@ -6,6 +6,7 @@
 # Package dependencies from nmk project files
 #
 
+furo
 myst-parser
 nmk-badges
 nmk-base
@@ -15,6 +16,5 @@ nmk-python
 nmk-vscode
 sphinx
 sphinx-autoapi
-sphinx_rtd_theme
 
 
