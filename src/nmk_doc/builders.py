@@ -11,16 +11,17 @@ class NmkDocSphinxBuilder(NmkTaskBuilder):
     Builder used to trigger **sphinx** documentation build
     """
 
-    def build(self, source_folder: str, output_folder: str):
+    def build(self, source_folder: str, output_folder: str, version: str = ""):  # type: ignore
         """
         Called by the **doc.build** task, to build the **sphinx** documentation
 
         :param source_folder: doc source folder
         :param output_folder: doc output folder
+        :param version: project version
         """
 
         # Invoke sphinx
-        run_with_logs(["sphinx-build", source_folder, output_folder])
+        run_with_logs(["sphinx-build", source_folder, output_folder] + (["-D", f"release={version}"] if version else []))
 
         # Touch main output index (for incremental build)
         self.main_output.touch()
