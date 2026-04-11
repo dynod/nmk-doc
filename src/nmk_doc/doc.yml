@@ -5,9 +5,18 @@ config:
   # Path for sphinx config file
   docConfig: ${docPath}/conf.py
 
-  # Doc inputs (all files of doc folder)
+  # Doc inputs (all files in doc folder)
   docStaticInputs:
-    __resolver__: nmk_doc.resolvers.NmkDocInputsResolver
+    __resolver__: nmk_base.resolvers.FilesResolver
+    params:
+      folder: ${docPath}
+
+  # Doc index file (used as condition for doc build tasks)
+  docIndex:
+    __resolver__: nmk_base.resolvers.FilesResolver
+    params:
+      folder: ${docPath}
+      extension: index.md
 
   # Doc inputs (all of them; to be extended by other plugins to add source code)
   docInputs:
@@ -64,7 +73,7 @@ tasks:
       - git.version
     appendToDeps:
       - setup
-    if: ${docInputs}
+    if: ${docIndex}
     input:
       - ${docConfigTemplate}
     output: ${docConfig}
@@ -80,7 +89,7 @@ tasks:
       - doc.config
     appendToDeps:
       - setup
-    if: ${docInputs}
+    if: ${docIndex}
     unless: ${docRTDDisabled}
     input:
       - ${docConfig}
@@ -96,7 +105,7 @@ tasks:
     emoji: ":open_book:.:hammer:"
     appendToDeps:
       - build
-    if: ${docInputs}
+    if: ${docIndex}
     input: ${docInputs}
     output: ${docOutput}/index.html
     builder: nmk_doc.builders.NmkDocSphinxBuilder
