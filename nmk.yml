@@ -19,7 +19,7 @@ config:
   pythonPackageRequirements:
     - nmk-base >= 1.3.0
     - sphinx
-    - sphinx_rtd_theme
+    - furo
     - myst-parser
 
   # Extra project data

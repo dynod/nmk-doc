@@ -25,7 +25,6 @@ config:
   # List of extensions to be enabled in sphinx config
   docExtensions:
     - myst_parser
-    - sphinx_rtd_theme
 
   # Extendable list for venv deps for projects which may need other sphinx extensions
   docExtensionsVenvDeps: []
@@ -41,7 +40,7 @@ config:
     __resolver__: nmk_doc.resolvers.NmkDocYearResolver
 
   # HTML theme
-  docHtmlTheme: sphinx_rtd_theme
+  docHtmlTheme: furo
 
   # Extra doc config
   docExtraConfig: {}
