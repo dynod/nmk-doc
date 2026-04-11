@@ -48,3 +48,11 @@ This tasks builds the documentation by calling the [sphinx](https://www.sphinx-d
 | input    | {ref}`${docInputs}<docinputs>` files                                                                                                                                                                      |
 | output   | {ref}`${docOutput}<docoutput>` folder                                                                                                                                                                     |
 | if       | enabled only if {ref}`${docIndex}<docIndex>` config item is not empty<br> <br>_<span style="color:orange">Changed in version 1.1.0</span>_ -- Previous enablement item was {ref}`${docInputs}<docInputs>` |
+
+Builder is called with the following parameters:
+
+| Parameter name | Value                                                                                                                                                              |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| source_folder  | {ref}`${docPath}<docPath>`                                                                                                                                         |
+| output_folder  | {ref}`${docOutput}<docOutput>`                                                                                                                                     |
+| version        | [`${gitVersion}`](https://nmk-base.readthedocs.io/en/stable/config.html#gitversion-git-version) <br> <br>_<span style="color:green">Added in version 1.1.0</span>_ |

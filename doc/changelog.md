@@ -15,3 +15,4 @@ The fully detailed changelog is also available on [Github](https://github.com/dy
   - updated {ref}`${docHtmlTheme}<docHtmlTheme>`: switched default theme to **furo**
 - Tasks behaviors:
   - all {ref}`doc.config<doc.config>`, {ref}`doc.rtd<doc.rtd>` and {ref}`doc.build<doc.build>` tasks are now only enabled only if {ref}`${docIndex}<docIndex>` file exists
+  - add version information when building documentation with {ref}`doc.build<doc.build>` task
