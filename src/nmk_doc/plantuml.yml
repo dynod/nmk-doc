@@ -1,0 +1,93 @@
+# PlantUML configuration for nmk_doc
+config:
+  # Version
+  plantUmlVersion: 1.2026.2
+
+  # Download URL
+  plantUmlDownloadUrl: https://github.com/plantuml/plantuml/releases/download/v${plantUmlVersion}/plantuml-mit-${plantUmlVersion}.jar
+
+  # Local path
+  plantUmlLocalPath: ${PROJECTDIR_NMK}/plantuml/plantuml.jar
+
+  # Diagrams folder
+  plantUmlDiagramsFolder: ${PROJECTDIR}/diagrams
+
+  # Diagrams
+  plantUmlDiagrams:
+    __resolver__: nmk_base.resolvers.FilesResolver
+    params:
+      folder: ${plantUmlDiagramsFolder}
+      extension: "*.puml"
+
+  # Output images folder
+  plantUmlOutputFolder: ${docPath}/diagrams
+
+  # Output images format
+  plantUmlOutputFormats:
+    - svg
+
+  # List of expected generated output files
+  plantUmlOutputFiles:
+    __resolver__: nmk_doc.resolvers.PlantUmlOutputFilesResolver
+    params:
+      diagrams: ${plantUmlDiagrams}
+      output_folder: ${plantUmlOutputFolder}
+      formats: ${plantUmlOutputFormats}
+
+  # Extra options for PlantUML command
+  plantUmlExtraOptions: --verbose --skip-fresh --check-before-run
+
+  # Enablement for PlatUML diagrams generation
+  plantUmlReady:
+    __resolver__: nmk_doc.resolvers.DiagramsReadyResolver
+    params:
+      diagrams: ${plantUmlDiagrams}
+      java_runtime: ${javaRuntime}
+
+  # VSCode settings for PlantUML (contributed only if diagrams are found in project)
+  plantUmlVsCodeSettings:
+    __resolver__: nmk_base.resolvers.MultiListChoiceResolver
+    params:
+      key: ${plantUmlReady}
+      choices:
+        True: ["${BASEDIR}/vscode_plantuml.json.jinja"]
+      default: []
+  vscodeSettingsFiles:
+    - ${plantUmlVsCodeSettings}
+
+tasks:
+  # Download PlantUML jar
+  puml.download:
+    description: Download PlantUML
+    emoji: ":factory:.:inbox_tray:"
+    builder: nmk_base.common.DownloadBuilder
+    input:
+      - ${PROJECTFILES}
+    output:
+      - ${plantUmlLocalPath}
+    params:
+      url: ${plantUmlDownloadUrl}
+      request_function: ${requestFunction}
+    appendToDeps: setup
+    if: ${plantUmlReady}
+
+  # Generate diagrams
+  puml.generate:
+    description: Generate PlantUML diagrams
+    emoji: ":factory:.:hammer:"
+    builder: nmk_doc.builders.PlantUmlBuilder
+    input:
+      - ${plantUmlDiagrams}
+    output:
+      - ${plantUmlOutputFiles}
+    params:
+      jar: ${plantUmlLocalPath}
+      java_runtime: ${javaRuntime}
+      input_folder: ${plantUmlDiagramsFolder}
+      output_folder: ${plantUmlOutputFolder}
+      formats: ${plantUmlOutputFormats}
+      extra_options: ${plantUmlExtraOptions}
+    deps:
+      - puml.download
+    prependToDeps: doc.build
+    if: ${plantUmlReady}

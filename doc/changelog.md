@@ -11,8 +11,10 @@ The fully detailed changelog is also available on [Github](https://github.com/dy
 ## Release 1.1.0
 
 - Config items update:
+  - added {ref}`config items<plantumlConfig>` related to **PlantUml** diagrams generation
   - added {ref}`${docIndex}<docIndex>`: resolved path to main **index.md** documentation index file
   - updated {ref}`${docHtmlTheme}<docHtmlTheme>`: switched default theme to **furo**
 - Tasks behaviors:
+  - added {ref}`puml.download<puml.download>` and {ref}`puml.generate<puml.generate>` to handle **PlantUml** diagrams generation
   - all {ref}`doc.config<doc.config>`, {ref}`doc.rtd<doc.rtd>` and {ref}`doc.build<doc.build>` tasks are now only enabled only if {ref}`${docIndex}<docIndex>` file exists
   - add version information when building documentation with {ref}`doc.build<doc.build>` task

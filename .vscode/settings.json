@@ -61,6 +61,11 @@
         }
     },
     "python.terminal.activateEnvironment": false,
+    "plantuml.diagramsRoot": "diagrams",
+    "plantuml.exportOutDir": "doc/diagrams",
+    "plantuml.jar": ".nmk/plantuml/plantuml.jar",
+    "plantuml.java": "java",
+    "plantuml.render": "Local",
     "cSpell.allowCompoundWords": true,
     "cSpell.enableFiletypes": [
         "yaml",

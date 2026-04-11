@@ -11,7 +11,7 @@ As other plugins, **`nmk-doc`** registers its version and documentation link in 
 The **`nmk-doc`** plugin automatically requires the following python packages to be installed in the [project venv](https://nmk-base.readthedocs.io/en/stable/extend.html#python-modules-dependencies):
 
 - [sphinx](https://pypi.org/project/sphinx/)
-- [furo](https://pypi.org/project/furo/)
+- [furo](https://pypi.org/project/furo/)<br>_<span style="color:orange">Changed in version 1.1.0</span>_ -- Previous dependency was **sphinx_rtd_theme**
 - [myst-parser](https://pypi.org/project/myst-parser/)
 
 ## Badges
@@ -23,8 +23,13 @@ This badge is enabled unless {ref}`${docRTDDisabled}<docRTDDisabled>` config ite
 
 > **Note:** enabled only if [**`nmk-badges`** plugin](https://nmk-badges.readthedocs.io/) is used in the nmk project
 
-## VSCode extensions
+## VSCode extensions and settings
 
-**`nmk-doc`** plugin [recommends](https://nmk-vscode.readthedocs.io/en/stable/extend.html#extensions) usage of the [Live Preview](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server) VSCode extension, in order to display generated documentation directly in the IDE (without needing an extra web browser).
+**`nmk-doc`** plugin [recommends](https://nmk-vscode.readthedocs.io/en/stable/extend.html#extensions) usage of the following extensions:
+
+- [Live Preview](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server): in order to display generated documentation directly in the IDE (without needing an extra web browser).
+- [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml): used for rich-editing and preview of **PlantUML** diagrams<br>_<span style="color:green">Added in version 1.1.0</span>_
+
+It also contributes the {ref}`${plantUmlVsCodeSettings}<plantUmlVsCodeSettings>` VSCode settings.
 
 > **Note:** enabled only if [**`nmk-vscode`** plugin](https://nmk-vscode.readthedocs.io/) is used in the nmk project

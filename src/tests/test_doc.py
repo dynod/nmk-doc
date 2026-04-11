@@ -80,3 +80,27 @@ class TestDocPlugin(NmkBaseTester):
         # Check ReadTheDocs file is not generated
         assert not (self.test_folder / ".readthedocs.yaml").is_file()
         self.check_logs("[doc.rtd]] DEBUG 🐛 - Task skipped, nothing to do")
+
+    def prepare_diagrams_project(self) -> Path:
+        # Setup project
+        p = self.prepare_doc_project()
+        diagrams_dir = self.test_folder / "diagrams"
+        diagrams_dir.mkdir(exist_ok=True, parents=True)
+        shutil.copyfile(self.template("example.puml"), diagrams_dir / "example.puml")
+        return p
+
+    def test_diagrams(self):
+        # Generate diagrams
+        p = self.prepare_diagrams_project()
+        self.nmk(p, extra_args=["puml.generate"])
+        assert (self.test_folder / "doc" / "diagrams" / "example sequence.svg").is_file()
+
+        # Build again (check incremental build)
+        self.nmk(p, extra_args=["puml.generate"])
+        self.check_logs("[puml.generate]] DEBUG 🐛 - Task skipped, nothing to do")
+
+    def test_diagrams_no_java(self):
+        # Try to generate diagrams without Java
+        p = self.prepare_diagrams_project()
+        self.nmk(p, extra_args=["puml.generate", "--config", "javaRuntime="])
+        self.check_logs("Java runtime not found, skipping PlantUML diagram generation")
