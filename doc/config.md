@@ -142,6 +142,10 @@ This item configures the enabled HTML theme for generated documentation.
 
 _<span style="color:orange">Changed in version 1.1.0</span>_ -- Previous theme was **sphinx_rtd_theme**
 
+---
+
+(docName)=
+
 ### **`docName`** -- Document name
 
 | Type | Default value                                                                                        |
@@ -150,6 +154,10 @@ _<span style="color:orange">Changed in version 1.1.0</span>_ -- Previous theme w
 
 This item is used to configure the main document name. Default value is the project name.
 
+---
+
+(docAuthor)=
+
 ### **`docAuthor`** -- Document author
 
 | Type | Default value                                                                                              |
@@ -157,6 +165,24 @@ This item is used to configure the main document name. Default value is the proj
 | str  | **[${projectAuthor}](https://nmk-base.readthedocs.io/en/stable/config.html#projectauthor-project-author)** |
 
 This item is used to configure the document author. Default value is the project author.
+
+---
+
+(docVersion)=
+
+### **`docVersion`** -- Document version
+
+| Type | Default value                                                                                     |
+| ---- | ------------------------------------------------------------------------------------------------- |
+| str  | **[${gitVersion}](https://nmk-base.readthedocs.io/en/stable/config.html#gitversion-git-version)** |
+
+This item is used to configure the main document version. Default value is the project git detected version.
+
+_<span style="color:green">Added in version 1.1.0</span>_
+
+---
+
+(docYear)=
 
 ### **`docYear`** -- Document year
 

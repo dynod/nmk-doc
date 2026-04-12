@@ -85,11 +85,11 @@ This tasks builds the documentation by calling the [sphinx](https://www.sphinx-d
 
 Builder is called with the following parameters:
 
-| Parameter name | Value                                                                                                                                                              |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| source_folder  | {ref}`${docPath}<docPath>`                                                                                                                                         |
-| output_folder  | {ref}`${docOutput}<docOutput>`                                                                                                                                     |
-| version        | [`${gitVersion}`](https://nmk-base.readthedocs.io/en/stable/config.html#gitversion-git-version) <br> <br>_<span style="color:green">Added in version 1.1.0</span>_ |
+| Parameter name | Value                                                                                              |
+| -------------- | -------------------------------------------------------------------------------------------------- |
+| source_folder  | {ref}`${docPath}<docPath>`                                                                         |
+| output_folder  | {ref}`${docOutput}<docOutput>`                                                                     |
+| version        | {ref}`${docVersion}<docVersion>`<br> <br>_<span style="color:green">Added in version 1.1.0</span>_ |
 
 ---
 

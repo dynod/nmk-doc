@@ -13,6 +13,7 @@ The fully detailed changelog is also available on [Github](https://github.com/dy
 - Config items update:
   - added {ref}`config items<plantumlConfig>` related to **PlantUml** diagrams generation
   - added {ref}`${docIndex}<docIndex>`: resolved path to main **index.md** documentation index file
+  - added {ref}`${docVersion}<docVersion>`: used to configure the document version
   - updated {ref}`${docHtmlTheme}<docHtmlTheme>`: switched default theme to **furo**
 - Tasks behaviors:
   - added {ref}`puml.download<puml.download>` and {ref}`puml.generate<puml.generate>` to handle **PlantUml** diagrams generation

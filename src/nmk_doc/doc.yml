@@ -35,6 +35,9 @@ config:
   # Project author (default: shared author config)
   docAuthor: ${projectAuthor}
 
+  # Project version (default: git version)
+  docVersion: ${gitVersion}
+
   # Project year
   docYear:
     __resolver__: nmk_doc.resolvers.NmkDocYearResolver
@@ -111,4 +114,4 @@ tasks:
     params:
       source_folder: ${docPath}
       output_folder: ${docOutput}
-      version: ${gitVersion}
+      version: ${docVersion}
