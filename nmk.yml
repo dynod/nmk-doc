@@ -26,6 +26,15 @@ config:
   pythonProjectFileItems:
     project:
       description: Documentation handling plugin for nmk build system
+      entry-points:
+        buildenv_template: # buildenv >=2 template
+          nmk-doc: nmk_doc._buildenv.template:NmkDocProjectTemplate
+          nmk-doc-plantuml: nmk_doc._buildenv.template:NmkDocPlantUmlProjectTemplate
+    tool:
+      coverage:
+        run:
+          omit:
+            - src/nmk_doc/_buildenv/template.py # New buildenv project template code
 
   # Github issues logged in nmk project
   githubIssuesRepo: nmk
