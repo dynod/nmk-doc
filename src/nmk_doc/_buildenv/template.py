@@ -20,6 +20,15 @@ class NmkDocProjectTemplate(NmkBaseProjectTemplate):
         return super().references + [NmkReference("nmk-doc!plugin.yml", ["nmk-base!plugin.yml"])]
 
     @property
+    def weight(self) -> int:
+        return 200
+
+    @property
+    def auto_extra(self) -> bool:
+        # If not selected as main template, at least used as an extra
+        return True
+
+    @property
     def description(self) -> str:
         return "project with documentation, generated using sphinx"
 
@@ -33,7 +42,7 @@ class NmkDocProjectTemplate(NmkBaseProjectTemplate):
 
     def generate_extra_files(self, renderer: BuildEnvRenderer):
         # Generate doc/index.md
-        renderer.render(_ENV, "doc/index.md.jinja", sub_path=_DOC_PATH)
+        renderer.render(_ENV, "doc/index.md.jinja", sub_path=_DOC_PATH, keywords={"project_name": self.project_name})
 
         # Generate doc/subchapter.md
         renderer.render(_ENV, "doc/subchapter.md.jinja", sub_path=_DOC_PATH)
@@ -43,6 +52,11 @@ class NmkDocPlantUmlProjectTemplate(NmkBaseProjectTemplate):
     """
     Template for **nmk-doc** plugin project with PlantUML diagrams
     """
+
+    @property
+    def weight(self):
+        # Not a main template
+        return 0
 
     @property
     def references(self) -> list[NmkReference]:
