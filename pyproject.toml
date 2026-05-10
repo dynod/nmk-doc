@@ -31,8 +31,8 @@ Repository = "https://github.com/dynod/nmk-doc"
 Issues = "https://github.com/dynod/nmk/issues?q=is%3Aopen+is%3Aissue+label%3Aplugin%3Adoc"
 
 [project.entry-points.buildenv_template]
-nmk-doc = "nmk_doc._buildenv.template:NmkDocProjectTemplate"
-nmk-doc-plantuml = "nmk_doc._buildenv.template:NmkDocPlantUmlProjectTemplate"
+"nmk.doc" = "nmk_doc._buildenv.template:NmkDocProjectTemplate"
+"nmk.plantuml" = "nmk_doc._buildenv.template:NmkDocPlantUmlProjectTemplate"
 
 [dependency-groups]
 dev = ["nmk-badges", "nmk-base", "nmk-github", "nmk-python", "nmk-vscode", "sphinx-autoapi"]

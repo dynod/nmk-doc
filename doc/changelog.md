@@ -8,6 +8,11 @@ Only interface and important behavior changes are listed here.
 The fully detailed changelog is also available on [Github](https://github.com/dynod/nmk-doc/releases)
 ```
 
+## Release 1.1.1
+
+- Make {ref}`${docRTDConfig}<docRTDConfig>` config file independent of python version
+- Add buildenv 2.0 install template preliminary support
+
 ## Release 1.1.0
 
 - Config items update:
