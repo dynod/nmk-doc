@@ -66,7 +66,9 @@ _<span style="color:green">Added in version 1.1.0</span>_
 
 ## Build tasks
 
-All tasks in this chapter are dependencies of the base [**`build`**](https://nmk-base.readthedocs.io/en/stable/tasks.html#build-task) task.
+All tasks in this chapter are dependencies of the base [**`build.doc`**](https://nmk-base.readthedocs.io/en/stable/tasks.html#build-doc-task) task.
+
+_<span style="color:orange">Changed in version 1.2.0</span>_ -- previous dependency was on main [**`build`**](https://nmk-base.readthedocs.io/en/stable/tasks.html#build-task) task.
 
 ---
 
