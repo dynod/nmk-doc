@@ -106,7 +106,7 @@ tasks:
     description: Build documentation
     emoji: ":open_book:.:hammer:"
     appendToDeps:
-      - build
+      - build.doc
     if: ${docIndex}
     input: ${docInputs}
     output: ${docOutput}/index.html

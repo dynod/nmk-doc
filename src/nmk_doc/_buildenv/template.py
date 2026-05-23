@@ -64,7 +64,7 @@ class NmkDocPlantUmlProjectTemplate(NmkBaseProjectTemplate):
 
     @property
     def description(self) -> str:
-        return "add support for PlanUML diagrams generation"
+        return "add support for PlantUML diagrams generation"
 
     @property
     def generated_files(self) -> set[Path]:
