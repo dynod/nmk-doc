@@ -1,2 +1,6 @@
 refs:
-    - pip://nmk-doc!plugin.yml
+  - pip://nmk-doc!plugin.yml
+
+config:
+  docSnippets:
+    example_snippet.txt: "${venvBin}/nmk --help"

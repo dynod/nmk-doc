@@ -34,6 +34,10 @@ config:
       output_folder: ${plantUmlOutputFolder}
       formats: ${plantUmlOutputFormats}
 
+  # All generaetd diagrams are doc innputs
+  docInputs:
+    - ${plantUmlOutputFiles}
+
   # Extra options for PlantUML command
   plantUmlExtraOptions: --verbose --skip-fresh --check-before-run
 

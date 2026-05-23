@@ -4,6 +4,7 @@ refs:
   - doc.yml # Doc generation handling
   - badges.yml # Badges generation logic
   - plantuml.yml # PlantUML generation logic
+  - snippets.yml # Documentation snippets generation logic
 
 # Extra config
 config:

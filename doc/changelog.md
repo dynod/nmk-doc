@@ -8,6 +8,14 @@ Only interface and important behavior changes are listed here.
 The fully detailed changelog is also available on [Github](https://github.com/dynod/nmk-doc/releases)
 ```
 
+## Release 1.2.0
+
+- Config items update:
+  - added {ref}`config items<snippetsConfig>` related to snippets generation
+  - updated {ref}`${docInputs}<docInputs>` to include generated **PlantUml** diagrams and doc snippets as inputs
+- Tasks behaviors:
+  - added {ref}`doc.snippets<doc.snippets>` task to handle snippets generation
+
 ## Release 1.1.1
 
 - Make {ref}`${docRTDConfig}<docRTDConfig>` config file independent of python version

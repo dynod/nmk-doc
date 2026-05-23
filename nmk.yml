@@ -39,3 +39,11 @@ config:
   # Github issues logged in nmk project
   githubIssuesRepo: nmk
   githubIssuesLabel: "plugin:doc"
+
+  # For documentation
+  docSnippets:
+    example_snippet.txt: "${venvBin}/nmk --help"
+
+  # Git ignore snippets
+  gitIgnoredFiles:
+    - ${docSnippetsOutputFolder}/

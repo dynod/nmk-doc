@@ -1,0 +1,28 @@
+@startuml task-definition
+
+<style>
+element {MinimumWidth 180}
+activityDiagram {
+    FontSize 15
+}
+</style>
+
+partition "setup" {
+    :📖.📝      doc.config;
+    note right: if doc/index.md exists
+    :📖.📝      doc.rtd;
+    note right: if doc/index.md exists\nunless ${docRTDDisabled} is set
+    :🏭.📥      puml.download;
+    note right: if diagrams/*.puml exist\nand java config is OK
+}
+
+partition "build (build.doc)" {
+    :🏭.🔨      puml.generate;
+    note right: if diagrams/*.puml exist\nand java config is OK
+    :📖.🧩      doc.snippets;
+    note right: if ${docSnippets} are defined
+    :📖.📝      doc.build;
+    note right: if doc/index.md exists
+}
+
+@enduml
