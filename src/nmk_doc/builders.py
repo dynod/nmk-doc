@@ -6,7 +6,7 @@ import shlex
 from pathlib import Path
 
 from nmk.model.builder import NmkTaskBuilder
-from nmk.utils import run_with_logs
+from nmk.utils import is_windows, run_with_logs
 
 
 class NmkDocSphinxBuilder(NmkTaskBuilder):
@@ -54,7 +54,7 @@ class PlantUmlBuilder(NmkTaskBuilder):
             jar,
             "--output-dir",
             output_folder,
-            *shlex.split(extra_options),
+            *shlex.split(extra_options, posix=not is_windows()),
             *[f"--{fmt}" for fmt in formats if fmt],  # Add format options (e.g., --png, --svg) if formats are specified
             input_folder,
         ]
@@ -85,5 +85,5 @@ class SnippetsBuilder(NmkTaskBuilder):
             output_file.parent.mkdir(parents=True, exist_ok=True)
 
             # Execute command and save output to file
-            cp = run_with_logs(shlex.split(command))
+            cp = run_with_logs(shlex.split(command, posix=not is_windows()))
             output_file.write_text(cp.stdout)
