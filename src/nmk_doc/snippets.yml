@@ -1,0 +1,39 @@
+config:
+  # Generated snippets output folder
+  docSnippetsOutputFolder: ${docPath}/snippets
+
+  # Definition of snippets to be generated (expected to be a dict of generation commands, indexed by output file name)
+  docSnippets: {}
+
+  # Snippets inputs (list of files that cause snippets rebuild if changed)
+  docSnippetsInputs: []
+
+  # Resolved list of expected snippets output files (based on docSnippets config)
+  docSnippetsOutputFiles:
+    __resolver__: nmk_doc.resolvers.DocSnippetsOutputFilesResolver
+    params:
+      snippets: ${docSnippets}
+      output_folder: ${docSnippetsOutputFolder}
+
+  # All generaetd snippets are doc innputs
+  docInputs:
+    - ${docSnippetsOutputFiles}
+
+tasks:
+  doc.snippets:
+    description: Generate documentation snippets
+    emoji: ":open_book:.:jigsaw:"
+    builder: nmk_doc.builders.SnippetsBuilder
+    appendToDeps:
+      - build.doc
+    prependToDeps:
+      - doc.build
+    if: ${docSnippets}
+    input:
+      - ${PROJECTFILES}
+      - ${docSnippetsInputs}
+    output:
+      - ${docSnippetsOutputFiles}
+    params:
+      snippets: ${docSnippets}
+      output_folder: ${docSnippetsOutputFolder}

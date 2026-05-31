@@ -15,9 +15,9 @@ class TestDocPlugin(NmkBaseTester):
         doc.mkdir(exist_ok=True)
         return doc
 
-    def prepare_doc_project(self) -> Path:
+    def prepare_doc_project(self, simple: bool = False) -> Path:
         # Build a sample project with doc files
-        return self.prepare_project("ref_doc.yml")
+        return self.prepare_project("ref_doc_simple.yml" if simple else "ref_doc.yml")
 
     def test_version(self):
         # Cover version resolver
@@ -25,7 +25,7 @@ class TestDocPlugin(NmkBaseTester):
 
     def test_no_doc(self):
         # Check project without documentation
-        self.nmk(self.prepare_doc_project(), extra_args=["--print", "docInputs"])
+        self.nmk(self.prepare_doc_project(simple=True), extra_args=["--print", "docInputs"])
         self.check_logs('Config dump: { "docInputs": [] }')
 
     def test_build_config(self):
@@ -104,3 +104,27 @@ class TestDocPlugin(NmkBaseTester):
         p = self.prepare_diagrams_project()
         self.nmk(p, extra_args=["puml.generate", "--config", "javaRuntime="])
         self.check_logs("Java runtime not found, skipping PlantUML diagram generation")
+
+    def jsonify(self, to_escape: Path) -> str:
+        # Escape backslashes (for Windows paths in json print)
+        return '"' + str(to_escape).replace("\\", "\\\\") + '"'
+
+    def test_snippets_output(self):
+        # Check snippets outputs
+        p = self.prepare_doc_project()
+        self.nmk(p, extra_args=["--print", "docSnippetsOutputFiles"])
+        self.check_logs(f'Config dump: {{ "docSnippetsOutputFiles": [ {self.jsonify(self.test_folder / "doc" / "snippets" / "example_snippet.txt")} ] }}')
+
+    def test_snippets_build(self):
+        # Generate snippets
+        p = self.prepare_doc_project()
+        self.nmk(p, extra_args=["doc.snippets"])
+
+        # Check generated file
+        gen_file = self.test_folder / "doc" / "snippets" / "example_snippet.txt"
+        assert gen_file.is_file()
+        assert "Next-gen make-like build system" in gen_file.read_text()
+
+        # Build again (check incremental build)
+        self.nmk(p, extra_args=["doc.snippets"])
+        self.check_logs("[doc.snippets]] DEBUG 🐛 - Task skipped, nothing to do")

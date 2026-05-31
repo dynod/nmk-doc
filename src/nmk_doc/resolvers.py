@@ -51,7 +51,7 @@ class PlantUmlOutputFilesResolver(NmkListConfigResolver):
         # Parse input inputs files to grab all diagram names
         diagram_names: list[str] = []
         for diagram in map(Path, diagrams):
-            for line in diagram.read_text().splitlines():
+            for line in diagram.read_text(encoding="utf-8", errors="ignore").splitlines():
                 match = _START_UML_PATTERN.match(line.strip())
                 if match:
                     diagram_names.append(match.group(1))
@@ -81,3 +81,23 @@ class DiagramsReadyResolver(NmkBoolConfigResolver):
             NmkLogger.warning("Java runtime not found, skipping PlantUML diagram generation")
 
         return (len(diagrams) > 0) and (java_runtime != "")
+
+
+class DocSnippetsOutputFilesResolver(NmkListConfigResolver):
+    """
+    Resolver for the list of generated documentation snippet files
+    """
+
+    def get_value(self, name: str, snippets: dict[str, str], output_folder: str) -> list[str]:  # type: ignore
+        """
+        Get the list of generated documentation snippet files.
+
+        :param name: config item name to be resolved
+        :param snippets: map of snippets definition, indexed by output file names
+        :param output_folder: output folder for the generated snippets
+        :return: list of generated snippet files
+        """
+
+        # List of generated snippet files
+        output_path = Path(output_folder)
+        return sorted([str(output_path / snippet) for snippet in snippets])

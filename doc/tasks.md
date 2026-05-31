@@ -2,6 +2,10 @@
 
 The **`nmk-doc`** plugin defines the tasks described below.
 
+This diagram summarizes the available tasks, and how they are ordered in a given **`nmk`** project:
+
+![](./diagrams/task-definition.svg)
+
 ---
 
 ## Setup tasks
@@ -12,7 +16,7 @@ All tasks in this chapter are dependencies of the base [**`setup`**](https://nmk
 
 (doc.config)=
 
-### **`doc.config`** -- doc configuration file generation
+### 📖.📝 **`doc.config`** -- doc configuration file generation
 
 This tasks generates the [sphinx](https://www.sphinx-doc.org/) configuration file.
 
@@ -27,7 +31,7 @@ This tasks generates the [sphinx](https://www.sphinx-doc.org/) configuration fil
 
 (doc.rtd)=
 
-### **`doc.rtd`** -- Read The Docs build configuration file generation
+### 📖.📝 **`doc.rtd`** -- Read The Docs build configuration file generation
 
 This tasks generates the [Read The Docs](https://readthedocs.org/) automated build configuration file.
 
@@ -42,7 +46,7 @@ This tasks generates the [Read The Docs](https://readthedocs.org/) automated bui
 
 (puml.download)=
 
-### **`puml.download`** -- Download the PlantUML runtime
+### 🏭.📥 **`puml.download`** -- Download the PlantUML runtime
 
 This tasks downloads the [PlantUML](https://plantuml.com/) runtime, needed to generate image files from input diagram files.
 
@@ -74,7 +78,7 @@ _<span style="color:orange">Changed in version 1.2.0</span>_ -- previous depende
 
 (doc.build)=
 
-### **`doc.build`** -- documentation build
+### 📖.🔨 **`doc.build`** -- documentation build
 
 This tasks builds the documentation by calling the [sphinx](https://www.sphinx-doc.org/) tool.
 
@@ -97,7 +101,7 @@ Builder is called with the following parameters:
 
 (puml.generate)=
 
-### **`puml.generate`** -- Generate the PlantUML diagram images
+### 🏭.🔨 **`puml.generate`** -- Generate the PlantUML diagram images
 
 This tasks calls the [PlantUML](https://plantuml.com/) runtime to generate image files from input diagram files.
 
@@ -120,3 +124,27 @@ Builder is called with the following parameters:
 | extra_options  | {ref}`${plantUmlExtraOptions}<plantUmlExtraOptions>`                                                           |
 
 _<span style="color:green">Added in version 1.1.0</span>_
+
+---
+
+(doc.snippets)=
+
+### 📖.🧩 **`doc.snippets`** -- Generate documentation snippets
+
+This tasks generates documentation snippets as defined in the **{ref}`${docSnippets}<docSnippets>`** config item.
+
+| Property | Value/description                                              |
+| -------- | -------------------------------------------------------------- |
+| builder  | {py:class}`nmk_doc.builders.SnippetsBuilder`                   |
+| inputs   | {ref}`${docSnippetsInputs}<docSnippetsInputs>` files           |
+| output   | {ref}`${docSnippetsOutputFiles}<docSnippetsOutputFiles>` files |
+| if       | {ref}`${docSnippets}<docSnippets>`                             |
+
+Builder is called with the following parameters:
+
+| Parameter name | Value                                                      |
+| -------------- | ---------------------------------------------------------- |
+| snippets       | {ref}`${docSnippets}<docSnippets>`                         |
+| output_folder  | {ref}`${docSnippetsOutputFolder}<docSnippetsOutputFolder>` |
+
+_<span style="color:green">Added in version 1.2.0</span>_

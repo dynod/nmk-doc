@@ -7,31 +7,43 @@ As for all **`nmk`** projects config items, [**`nmk-doc`** ones](config.md) are 
 Plugins which support documentation generation from source code should extend the **{ref}`${docInputs}<docinputs>`** config item, in order to trigger documentation rebuild if source code is modified.
 
 Example:
+
 ```yaml
 docInputs:
-    - file.py
-    - ${someVarResolvingAllPyFiles}
+  - file.py
+  - ${someVarResolvingAllPyFiles}
 ```
 
 ## Sphinx extensions
 
 Plugins and/or project may want to enable [sphinx extensions](https://www.sphinx-doc.org/en/master/usage/extensions/index.html), in addition to the default ones. The following items may be extended for this purpose:
 
-* **{ref}`${docExtensions}<docExtensions>`**: List of enabled sphinx extensions.
+- **{ref}`${docExtensions}<docExtensions>`**: List of enabled sphinx extensions.
   Example:
   ```yaml
   docExtensions:
-      - breathe
+    - breathe
   ```
-* **{ref}`${docExtensionsVenvDeps}<docExtensionsVenvDeps>`**: List of python modules to be installed in the project venv in order to support the enabled extensions.
+- **{ref}`${docExtensionsVenvDeps}<docExtensionsVenvDeps>`**: List of python modules to be installed in the project venv in order to support the enabled extensions.
   Example:
   ```yaml
   docExtensionsVenvDeps:
-      - breathe
+    - breathe
   ```
-* **{ref}`${docExtraConfig}<docExtraConfig>`**: Dictionnary of additional sphinx config parameters, to be added to the generated {ref}`configuration file<docconfig>`.
+- **{ref}`${docExtraConfig}<docExtraConfig>`**: Dictionnary of additional sphinx config parameters, to be added to the generated {ref}`configuration file<docconfig>`.
   Example:
   ```yaml
   docExtraConfig:
-      configName: value
+    configName: value
   ```
+
+## Doc snippets
+
+Plugins and/or project may want to include some generated snippets in their documentation. They can define snippets by contributing to the **{ref}`${docSnippets}<docSnippets>`** item.
+
+Example:
+
+```yaml
+docSnippets:
+  example_snippet.txt: "${venvBin}/nmk --help"
+```
