@@ -15,6 +15,7 @@ The fully detailed changelog is also available on [Github](https://github.com/dy
   - updated {ref}`${docInputs}<docInputs>` to include generated **PlantUml** diagrams and doc snippets as inputs
 - Tasks behaviors:
   - added {ref}`doc.snippets<doc.snippets>` task to handle snippets generation
+- Removed [Live Preview](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server) from suggested extensions, now that HTML preview is integrated natively in VSCode (since **1.121.0**)
 
 ## Release 1.1.1
 

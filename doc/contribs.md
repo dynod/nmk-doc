@@ -27,7 +27,6 @@ This badge is enabled unless {ref}`${docRTDDisabled}<docRTDDisabled>` config ite
 
 **`nmk-doc`** plugin [recommends](https://nmk-vscode.readthedocs.io/en/stable/extend.html#extensions) usage of the following extensions:
 
-- [Live Preview](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server): in order to display generated documentation directly in the IDE (without needing an extra web browser).
 - [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml): used for rich-editing and preview of **PlantUML** diagrams<br>_<span style="color:green">Added in version 1.1.0</span>_
 
 It also contributes the {ref}`${plantUmlVsCodeSettings}<plantUmlVsCodeSettings>` VSCode settings.
