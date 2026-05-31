@@ -41,9 +41,7 @@ config:
   githubIssuesLabel: "plugin:doc"
 
   # For documentation
-  linuxLineEndings:
-    - .txt
   venvPkgDeps:
     - cowsay
   docSnippets:
-    example_snippet.txt: '${venvBin}/cowsay -t "sample snippet"'
+    example_snippet.txt: "${venvBin}/cowsay -t Moooo"
