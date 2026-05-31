@@ -48,7 +48,7 @@ Example configuration:
 
 ```yaml
 docSnippets:
-  example_snippet.txt: '${venvBin}/cowsay -t "sample snippet"'
+  example_snippet.txt: "${venvBin}/cowsay -t Moooo"
 ```
 
 Generated fragment, included in this document:
