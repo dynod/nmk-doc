@@ -84,6 +84,6 @@ class SnippetsBuilder(NmkTaskBuilder):
             output_file = Path(output_folder) / snippet_name
             output_file.parent.mkdir(parents=True, exist_ok=True)
 
-            # Execute command and save output to file
+            # Execute command and save output to file (force linux line endings)
             cp = run_with_logs(shlex.split(command, posix=not is_windows()))
-            output_file.write_text(cp.stdout)
+            output_file.write_text(cp.stdout, encoding="utf-8", errors="ignore", newline="\n")
