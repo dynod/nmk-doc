@@ -123,7 +123,7 @@ class TestDocPlugin(NmkBaseTester):
         # Check generated file
         gen_file = self.test_folder / "doc" / "snippets" / "example_snippet.txt"
         assert gen_file.is_file()
-        assert "usage: nmk [-h] [-V]" in gen_file.read_text()
+        assert "Next-gen make-like build system" in gen_file.read_text()
 
         # Build again (check incremental build)
         self.nmk(p, extra_args=["doc.snippets"])
