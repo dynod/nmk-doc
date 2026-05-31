@@ -35,7 +35,7 @@ Issues = "https://github.com/dynod/nmk/issues?q=is%3Aopen+is%3Aissue+label%3Aplu
 "nmk.plantuml" = "nmk_doc._buildenv.template:NmkDocPlantUmlProjectTemplate"
 
 [dependency-groups]
-dev = ["nmk-badges", "nmk-base", "nmk-github", "nmk-python", "nmk-vscode", "sphinx-autoapi"]
+dev = ["cowsay", "nmk-badges", "nmk-base", "nmk-github", "nmk-python", "nmk-vscode", "sphinx-autoapi"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

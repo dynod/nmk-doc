@@ -41,9 +41,7 @@ config:
   githubIssuesLabel: "plugin:doc"
 
   # For documentation
+  venvPkgDeps:
+    - cowsay
   docSnippets:
-    example_snippet.txt: "${venvBin}/nmk --help"
-
-  # Git ignore snippets
-  gitIgnoredFiles:
-    - ${docSnippetsOutputFolder}/
+    example_snippet.txt: '${venvBin}/cowsay -t "sample snippet"'
