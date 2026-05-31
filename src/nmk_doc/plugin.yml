@@ -26,5 +26,4 @@ config:
 
   # Contribution to VSCode extensions
   vscodeExtensionsNames:
-    - ms-vscode.live-server # Used for live preview of generated documentation
     - jebbs.plantuml # Used for PlantUML diagram editing and preview
