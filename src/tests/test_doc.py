@@ -105,11 +105,15 @@ class TestDocPlugin(NmkBaseTester):
         self.nmk(p, extra_args=["puml.generate", "--config", "javaRuntime="])
         self.check_logs("Java runtime not found, skipping PlantUML diagram generation")
 
+    def jsonify(self, to_escape: Path) -> str:
+        # Escape backslashes (for Windows paths in json print)
+        return '"' + str(to_escape).replace("\\", "\\\\") + '"'
+
     def test_snippets_output(self):
         # Check snippets outputs
         p = self.prepare_doc_project()
         self.nmk(p, extra_args=["--print", "docSnippetsOutputFiles"])
-        self.check_logs(f'{Path(self.test_folder.name) / "doc" / "snippets" / "example_snippet.txt"}" ]')
+        self.check_logs(f'Config dump: {{ "docSnippetsOutputFiles": [ {self.jsonify(self.test_folder / "doc" / "snippets" / "example_snippet.txt")} ] }}')
 
     def test_snippets_build(self):
         # Generate snippets
