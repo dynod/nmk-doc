@@ -41,6 +41,7 @@ This tasks generates the [Read The Docs](https://readthedocs.org/) automated bui
 | inputs   | {ref}`${docConfig}<docconfig>` doc config file<br>{ref}`${docRTDConfigTemplate}<docRTDConfigTemplate>` template file                                                                                      |
 | output   | {ref}`${docRTDConfig}<docRTDConfig>` file                                                                                                                                                                 |
 | if       | enabled only if {ref}`${docIndex}<docIndex>` config item is not empty<br> <br>_<span style="color:orange">Changed in version 1.1.0</span>_ -- Previous enablement item was {ref}`${docInputs}<docInputs>` |
+| unless   | enabled only if {ref}`${docRTDDisabled}<docRTDDisabled>` is false                                                                                                                                         |
 
 ---
 
