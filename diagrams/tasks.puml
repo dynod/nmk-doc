@@ -21,7 +21,12 @@ partition "build (build.doc)" {
     note right: if diagrams/*.puml exist\nand java config is OK
     :📖.🧩      doc.snippets;
     note right: if ${docSnippets} are defined
-    :📖.📝      doc.build;
+    :📖.🔨      doc.build;
+    note right: if doc/index.md exists
+}
+
+partition "package" {
+    :📖.📦      doc.package;
     note right: if doc/index.md exists
 }
 

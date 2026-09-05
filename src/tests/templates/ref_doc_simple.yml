@@ -1,2 +1,6 @@
 refs:
   - pip://nmk-doc!plugin.yml
+
+config:
+  projectName: sample-project
+  docVersion: 1.0.0

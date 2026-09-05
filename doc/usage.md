@@ -14,6 +14,8 @@ Then you can start writing documentation by adding an **index.md** file in your 
 - generate the [sphinx](https://www.sphinx-doc.org/) **conf.py** file in the **doc** sub-folder
 - build the documentation; you can check the result by browsing the **out/doc/index.html** file
 
+You may also want to archive your documentation: **`nmk package`** will product a ZIP archive with the documentation content in the **out/artifacts** folder, ready to be pushed anywhere.
+
 ## Generate **PlantUML** diagrams
 
 This plugin also enables images generation from [PlantUML](https://plantuml.com/) diagrams. If you add some **.puml** diagram files in your project **diagrams** sub-folder, **`nmk`** build will:

@@ -12,13 +12,16 @@ The fully detailed changelog is also available on [Github](https://github.com/dy
 
 - Config items update:
   - added {ref}`${plantUmlDefaultFormat}<plantUmlDefaultFormat>` to specifically identify (and override) default output format for **PlantUml**
+  - added {ref}`${docArtifacts}<docArtifacts>`, {ref}`${docArchive}<docArchive>` and {ref}`${docArtifactsCleanPattern}<docArtifactsCleanPattern>` items to configure documentation archive packaging
+- Tasks update:
+  - added {ref}`doc.package<doc.package>` task to bundle the built documentation in a ZIP archive
 
 ## Release 1.2.0
 
 - Config items update:
   - added {ref}`config items<snippetsConfig>` related to snippets generation
   - updated {ref}`${docInputs}<docInputs>` to include generated **PlantUml** diagrams and doc snippets as inputs
-- Tasks behaviors:
+- Tasks update:
   - added {ref}`doc.snippets<doc.snippets>` task to handle snippets generation
 - Removed [Live Preview](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server) from suggested extensions, now that HTML preview is integrated natively in VSCode (since **1.121.0**)
 

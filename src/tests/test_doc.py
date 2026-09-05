@@ -135,3 +135,26 @@ class TestDocPlugin(NmkBaseTester):
         # Build again (check incremental build)
         self.nmk(p, extra_args=["doc.snippets"])
         self.check_logs("[doc.snippets]] DEBUG 🐛 - Task skipped, nothing to do")
+
+    def test_archive_build(self):
+        # Generate doc archive
+        p = self.prepare_doc_project(simple=True)
+        (self.test_folder / "doc").mkdir(exist_ok=True, parents=True)
+        (self.test_folder / "doc" / "index.md").touch()
+        (self.test_folder / "out" / "doc").mkdir(exist_ok=True, parents=True)
+        (self.test_folder / "out" / "doc" / "index.html").write_text("<html><body>Sample doc</body></html>")
+        self.nmk(p, extra_args=["doc.package"])
+
+        # Check generated file
+        gen_file = self.test_folder / "out" / "artifacts" / "sample-project-1.0.0-doc.zip"
+        assert gen_file.is_file()
+
+        # Build again (check incremental build)
+        self.nmk(p, extra_args=["doc.package"])
+        self.check_logs("[doc.package]] DEBUG 🐛 - Task skipped, nothing to do")
+
+        # Build again with a different version (check old artifact is removed)
+        self.nmk(p, extra_args=["doc.package", "--config", '{"docVersion":"1.0.1"}'])
+        assert not gen_file.is_file()
+        gen_file = self.test_folder / "out" / "artifacts" / "sample-project-1.0.1-doc.zip"
+        assert gen_file.is_file()
