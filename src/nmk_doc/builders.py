@@ -3,6 +3,7 @@ Python module for **nmk-doc** plugin builders.
 """
 
 import shlex
+import shutil
 from pathlib import Path
 
 from nmk.model.builder import NmkTaskBuilder
@@ -89,3 +90,27 @@ class SnippetsBuilder(NmkTaskBuilder):
             # Execute command and save output to file (force linux line endings)
             cp = run_with_logs(shlex.split(command, posix=not is_windows()))
             output_file.write_text(cp.stdout, encoding="utf-8", errors="ignore", newline="\n")
+
+
+class ArchiveBuilder(NmkTaskBuilder):
+    """
+    Builder used to generate documentation archive
+    """
+
+    def build(self, clean_pattern: str):  # type: ignore
+        """
+        Called by the **doc.package** task, to generate documentation archive
+
+        :param clean_pattern: pattern for the files to clean from the output folder (glob style)
+        """
+
+        # Prepare output folder if needed
+        output_folder = self.main_output.parent
+        output_folder.mkdir(parents=True, exist_ok=True)
+
+        # Clean former doc archives
+        for old_archive in output_folder.glob(clean_pattern):
+            old_archive.unlink()
+
+        # Create zip archive
+        shutil.make_archive(base_name=str(self.main_output.with_suffix("")), format="zip", root_dir=self.main_input.parent)

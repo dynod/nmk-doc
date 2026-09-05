@@ -66,6 +66,15 @@ config:
   venvPkgDeps:
     - ${docExtensionsVenvDeps} # Additional venv dependencies (other sphinx extensions)
 
+  # Documentation archive folder
+  docArtifacts: ${outputDir}/artifacts
+
+  # Documentation archive file (zip)
+  docArchive: ${docArtifacts}/${projectName}-${docVersion}-doc.zip
+
+  # Clean pattern for documentation artifacts
+  docArtifactsCleanPattern: "*-doc.zip"
+
 tasks:
   # Generate sphinx configuration file
   doc.config:
@@ -115,3 +124,16 @@ tasks:
       source_folder: ${docPath}
       output_folder: ${docOutput}
       version: ${docVersion}
+
+  # Package documentation
+  doc.package:
+    description: Package documentation archive
+    emoji: ":open_book:.:package:"
+    appendToDeps:
+      - package
+    if: ${docIndex}
+    input: ${docOutput}/index.html
+    output: ${docArchive}
+    builder: nmk_doc.builders.ArchiveBuilder
+    params:
+      clean_pattern: ${docArtifactsCleanPattern}

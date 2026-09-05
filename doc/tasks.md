@@ -149,3 +149,32 @@ Builder is called with the following parameters:
 | output_folder  | {ref}`${docSnippetsOutputFolder}<docSnippetsOutputFolder>` |
 
 _<span style="color:green">Added in version 1.2.0</span>_
+
+---
+
+## Package tasks
+
+All tasks in this chapter are dependencies of the base [**`package`**](https://nmk-base.readthedocs.io/en/stable/tasks.html#package-task) task.
+
+---
+
+(doc.package)=
+
+### 📖.📦 **`doc.package`** -- documentation packaging
+
+This tasks creates a documentation archive from the built HTML files tree, ready to be somehow integrated in final artifact of the project, or archived anywhere.
+
+| Property | Value/description                                                     |
+| -------- | --------------------------------------------------------------------- |
+| builder  | {py:class}`nmk_doc.builders.ArchiveBuilder`                           |
+| input    | {ref}`${docOutput}<docOutput>`/index.html file                        |
+| output   | {ref}`${docArchive}<docArchive>` file                                 |
+| if       | enabled only if {ref}`${docIndex}<docIndex>` config item is not empty |
+
+Builder is called with the following parameters:
+
+| Parameter name | Value                                                        |
+| -------------- | ------------------------------------------------------------ |
+| clean_pattern  | {ref}`${docArtifactsCleanPattern}<docArtifactsCleanPattern>` |
+
+_<span style="color:green">Added in version 1.3.0</span>_
