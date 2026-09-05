@@ -22,9 +22,12 @@ config:
   # Output images folder
   plantUmlOutputFolder: ${docPath}/diagrams
 
+  # Output image default format
+  plantUmlDefaultFormat: svg
+
   # Output images format
   plantUmlOutputFormats:
-    - svg
+    - ${plantUmlDefaultFormat}
 
   # List of expected generated output files
   plantUmlOutputFiles:
@@ -39,7 +42,7 @@ config:
     - ${plantUmlOutputFiles}
 
   # Extra options for PlantUML command
-  plantUmlExtraOptions: --verbose --skip-fresh --check-before-run
+  plantUmlExtraOptions: --skip-fresh --check-before-run
 
   # Enablement for PlatUML diagrams generation
   plantUmlReady:

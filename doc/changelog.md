@@ -8,6 +8,11 @@ Only interface and important behavior changes are listed here.
 The fully detailed changelog is also available on [Github](https://github.com/dynod/nmk-doc/releases)
 ```
 
+## Release 1.3.0
+
+- Config items update:
+  - added {ref}`${plantUmlDefaultFormat}<plantUmlDefaultFormat>` to specifically identify (and override) default output format for **PlantUml**
+
 ## Release 1.2.0
 
 - Config items update:

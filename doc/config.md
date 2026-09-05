@@ -332,15 +332,29 @@ This is the generation folder for **PlantUML** diagram image files.
 
 ---
 
+(plantUmlDefaultFormat)=
+
+### **`plantUmlDefaultFormat`** -- PlantUML default output format
+
+| Type | Default value |
+| ---- | ------------- |
+| str  | "svg"         |
+
+This is the default output file format to be generated from **PlantUML** diagram files.
+
+_<span style="color:green">Added in version 1.3.0</span>_
+
+---
+
 (plantUmlOutputFormats)=
 
 ### **`plantUmlOutputFormats`** -- PlantUML output formats
 
-| Type      | Default value |
-| --------- | ------------- |
-| list[str] | [ "svg" ]     |
+| Type      | Default value                                              |
+| --------- | ---------------------------------------------------------- |
+| list[str] | [ {ref}`${plantUmlDefaultFormat}<plantUmlDefaultFormat>` ] |
 
-This is the list of output file formats to be generated from **PlantUML** diagram files.
+This is the list of output file formats to be generated from **PlantUML** diagram files, ready to be extended if more than one format is expected.
 
 ---
 

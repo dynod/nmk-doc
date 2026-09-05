@@ -99,6 +99,13 @@ class TestDocPlugin(NmkBaseTester):
         self.nmk(p, extra_args=["puml.generate"])
         self.check_logs("[puml.generate]] DEBUG 🐛 - Task skipped, nothing to do")
 
+    def test_diagrams_multi_formats(self):
+        # Generate diagrams for several formats
+        p = self.prepare_diagrams_project()
+        self.nmk(p, extra_args=["puml.generate", "--config", '{"plantUmlDefaultFormat":"png"}', "--config", '{"plantUmlOutputFormats":["txt"]}'])
+        assert (self.test_folder / "doc" / "diagrams" / "example sequence.png").is_file()
+        assert (self.test_folder / "doc" / "diagrams" / "example sequence.atxt").is_file()
+
     def test_diagrams_no_java(self):
         # Try to generate diagrams without Java
         p = self.prepare_diagrams_project()

@@ -47,18 +47,20 @@ class PlantUmlBuilder(NmkTaskBuilder):
         :param extra_options: extra options for the PlantUML command
         """
 
-        # Invoke plantuml
-        args = [
-            java_runtime,
-            "-jar",
-            jar,
-            "--output-dir",
-            output_folder,
-            *shlex.split(extra_options, posix=not is_windows()),
-            *[f"--{fmt}" for fmt in formats if fmt],  # Add format options (e.g., --png, --svg) if formats are specified
-            input_folder,
-        ]
-        run_with_logs(args)
+        # Iterate on formats
+        for fmt in formats:
+            # Invoke plantuml
+            args = [
+                java_runtime,
+                "-jar",
+                jar,
+                "--output-dir",
+                output_folder,
+                *shlex.split(extra_options, posix=not is_windows()),
+                f"--{fmt}",
+                input_folder,
+            ]
+            run_with_logs(args)
 
         # Touch all output files
         for output_file in filter(lambda of: of.is_file(), self.outputs):

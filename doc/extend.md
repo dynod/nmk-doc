@@ -47,3 +47,18 @@ Example:
 docSnippets:
   example_snippet.txt: "${venvBin}/nmk --help"
 ```
+
+## PlantUml diagrams
+
+Plugins and/or project may want to configure the generated **PlantUml** diagrams output format(s). They can do this by contributing the following items:
+
+- **{ref}`${plantUmlDefaultFormat}<plantUmlDefaultFormat>`**: change output format (default is svg)
+- **{ref}`${plantUmlOutputFormats}<plantUmlOutputFormats>`**: generate extra output formats in addition to the default one
+
+Example:
+
+```yaml
+plantUmlDefaultFormat: png
+plantUmlOutputFormats:
+  - txt
+```
