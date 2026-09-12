@@ -101,3 +101,21 @@ class DocSnippetsOutputFilesResolver(NmkListConfigResolver):
         # List of generated snippet files
         output_path = Path(output_folder)
         return sorted([str(output_path / snippet) for snippet in snippets])
+
+
+class JsFilesResolver(NmkListConfigResolver):
+    """
+    Resolver for the list of JavaScript files to be included in the configuration
+    """
+
+    def get_value(self, name: str, input_files: list[str]) -> list[str]:  # type: ignore
+        """
+        Get the list of JavaScript files names to be included in the configuration.
+
+        :param name: config item name to be resolved
+        :param input_files: list of resources files
+        :return: list of JavaScript files to be included in the configuration
+        """
+
+        # Return the list of JavaScript files names
+        return list(map(lambda js_file: js_file.name, filter(lambda x: x.suffix == ".js", map(Path, input_files))))

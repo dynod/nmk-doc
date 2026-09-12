@@ -58,3 +58,12 @@ Generated fragment, included in this document:
 ```{include} snippets/example_snippet.txt
 :literal:
 ```
+
+(customization)=
+
+## Customization
+
+In addition to standard **Sphinx** documentation build, extra features are provided through customization scripts:
+
+- external links are systematically opened in a new browser tab, to ease navigation between separated documentations<br>
+  _<span style="color:green">Added in version 1.4.0</span>_

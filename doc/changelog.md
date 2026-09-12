@@ -8,6 +8,14 @@ Only interface and important behavior changes are listed here.
 The fully detailed changelog is also available on [Github](https://github.com/dynod/nmk-doc/releases)
 ```
 
+## Release 1.4.0
+
+- Config items update:
+  - added {ref}`${docHtmlStaticPath}<docHtmlStaticPath>`, {ref}`${docHtmlStaticPaths}<docHtmlStaticPaths>` and {ref}`${docHtmlStaticFiles}<docHtmlStaticFiles>` items to handle extra static resources to be bundled in the documentation
+  - added {ref}`${docHtmlJsFiles}<docHtmlJsFiles>` item to configure used scripts for generated documentation customization
+- Added {ref}`customizations<customization>`:
+  - open external links in a new browser tab
+
 ## Release 1.3.0
 
 - Config items update:
