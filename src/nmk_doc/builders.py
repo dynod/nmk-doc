@@ -15,14 +15,33 @@ class NmkDocSphinxBuilder(NmkTaskBuilder):
     Builder used to trigger **sphinx** documentation build
     """
 
-    def build(self, source_folder: str, output_folder: str, version: str = ""):  # type: ignore
+    def build(self, source_folder: str, output_folder: str, version: str = "", static_sub_folder: str = "_static", static_resources: list[str] | None = None):  # type: ignore
         """
         Called by the **doc.build** task, to build the **sphinx** documentation
+
+        Before calling **sphinx**, this builder also copy the configured static files in the static resources directory
 
         :param source_folder: doc source folder
         :param output_folder: doc output folder
         :param version: project version
+        :param static_sub_folder: subfolder for static resources
+        :param static_resources: list of static resources to copy
         """
+
+        # Copy static resources if provided
+        if static_resources:  # pragma: no branch
+            # Prepare folder (clean old resources)
+            static_folder = Path(source_folder) / static_sub_folder
+            if static_folder.is_dir():
+                shutil.rmtree(static_folder)
+            static_folder.mkdir(parents=True, exist_ok=True)
+
+            # Copy all input files
+            for src_file in map(Path, static_resources):
+                if src_file.is_file():
+                    shutil.copyfile(src_file, static_folder / src_file.name)
+                else:
+                    self.logger.warning(f"Static resource '{src_file}' was not found")
 
         # Invoke sphinx
         run_with_logs(["sphinx-build", source_folder, output_folder] + (["-D", f"release={version}"] if version else []))

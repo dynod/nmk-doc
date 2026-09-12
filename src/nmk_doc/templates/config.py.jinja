@@ -13,10 +13,15 @@ author = "{{ docAuthor }}"
 # Extensions configuration
 extensions = [{% for extension in docExtensions %}{% if loop.index > 1 %}, {% endif %}"{{ extension }}"{% endfor %}]
 
-# HTML theme
+# HTML settings
 html_theme = "{{ docHtmlTheme }}"
+html_static_path = [{% for p in docHtmlStaticPaths %}
+    "{{ p }}",{% endfor %}
+]
+html_js_files = [{% for jsf in docHtmlJsFiles %}
+    "{{ jsf }}",{% endfor %}
+]
 
-# Extra configuration
-{% for cfg in docExtraConfig %}
+# Extra configuration{% for cfg in docExtraConfig %}
 {{ cfg }} = {% if docExtraConfig[cfg] is string %}"{{docExtraConfig[cfg]}}"{% else %}{{docExtraConfig[cfg]}}{% endif %}{% endfor %}
 

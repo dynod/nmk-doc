@@ -49,8 +49,19 @@ class TestDocPlugin(NmkBaseTester):
         prj = self.prepare_doc_project()
         self.nmk(prj, extra_args=["doc.config", "doc.build"])
 
-        # Check built doc index exists
+        # Check warning on missing resource
+        self.check_logs("Static resource 'unknown.png' was not found")
+
+        # Check built doc index exists (+generated static resources)
         assert (self.test_folder / "out" / "doc" / "index.html").is_file()
+        assert (self.test_folder / "out" / "doc" / "_static" / "ext_links.js").is_file()
+
+        # Touch index and rebuild (to force static resources cleaning)
+        (self.doc_folder / "index.md").touch()
+        fake_resource = self.doc_folder / "static" / "blabla.png"
+        fake_resource.touch()
+        self.nmk(prj, extra_args=["doc.config", "doc.build"])
+        assert not fake_resource.is_file()
 
         # Check rebuild
         self.nmk(prj, extra_args=["doc.build"])

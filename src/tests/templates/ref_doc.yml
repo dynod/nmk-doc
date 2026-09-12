@@ -4,3 +4,7 @@ refs:
 config:
   docSnippets:
     example_snippet.txt: "${venvBin}/nmk --help"
+
+  # Extra resource files
+  docHtmlStaticFiles:
+    - unknown.png

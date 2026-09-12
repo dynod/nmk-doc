@@ -45,6 +45,23 @@ config:
   # HTML theme
   docHtmlTheme: furo
 
+  # HTML contributed static resources folder (relative to docPath)
+  docHtmlStaticPath: static
+
+  # All HTML contributed static resources folders
+  docHtmlStaticPaths:
+    - ${docHtmlStaticPath}
+
+  # HTML input static files (to be copied in static folder)
+  docHtmlStaticFiles:
+    - ${BASEDIR}/templates/ext_links.js
+
+  # HTML javascript file names (for config file generation)
+  docHtmlJsFiles:
+    __resolver__: nmk_doc.resolvers.JsFilesResolver
+    params:
+      input_files: ${docHtmlStaticFiles}
+
   # Extra doc config
   docExtraConfig: {}
 
@@ -124,6 +141,8 @@ tasks:
       source_folder: ${docPath}
       output_folder: ${docOutput}
       version: ${docVersion}
+      static_sub_folder: ${docHtmlStaticPath}
+      static_resources: ${docHtmlStaticFiles}
 
   # Package documentation
   doc.package:
