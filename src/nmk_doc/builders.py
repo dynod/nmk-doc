@@ -39,7 +39,8 @@ class NmkDocSphinxBuilder(NmkTaskBuilder):
             # Copy all input files
             for src_file in map(Path, static_resources):
                 if src_file.is_file():
-                    shutil.copyfile(src_file, static_folder / src_file.name)
+                    # Open source and dump content to destination (to generate line endings for the current OS)
+                    (static_folder / src_file.name).write_text(src_file.read_text(encoding="utf-8", errors="ignore"), encoding="utf-8", errors="ignore")
                 else:
                     self.logger.warning(f"Static resource '{src_file}' was not found")
 
